@@ -14,7 +14,7 @@ To get the CrashLoopBackOff cleaner app deployed to AKS follow the below steps.
 - `docker build -t cleanerapp:dev .`
 - `docker tag cleanerapp:dev youracr.azurecr.io/demo/crashloopbackoffcleaner:latest`
 - [Push the tagged docker image to Azure Container Registry](http://chamindac.blogspot.com/2022/09/manually-push-net-app-docker-image-to.html)
-- use makefiles and k8s.yaml files in deploy folder to get the app deployed to AKS Linux node.
+- Use makefiles and k8s.yaml files in deploy folder to get the app deployed to AKS Linux node.
 
 
 **Note**: This workaround solution is implemented for an application having a single container running in each pod running into socket exceptions at startup, trying to connect to Azure App Configuration service.
