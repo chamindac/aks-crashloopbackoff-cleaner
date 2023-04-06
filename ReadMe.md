@@ -17,7 +17,7 @@ To get the CrashLoopBackOff cleaner app deployed to AKS follow the below steps.
 - Use makefiles and k8s.yaml files in deploy folder to get the app deployed to AKS Linux node.
 
 
-**Note**: This workaround solution is implemented for an application having a single container running in each pod running into socket exceptions at startup, trying to connect to Azure App Configuration service.
+**Note**: This workaround solution is implemented for an application having a single container running in each pod running into socket exceptions at startup, while trying to connect to Azure App Configuration service.
 
 Issue description is below..
 
