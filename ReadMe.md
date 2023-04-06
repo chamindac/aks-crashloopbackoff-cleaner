@@ -1,4 +1,6 @@
 **CrashLoopBackOff - Cleaner App**
+![image](https://user-images.githubusercontent.com/20109548/230338712-5a1dc407-6b54-48ef-ac34-d8793324fa3c.png)
+
 
 This is implemented as a temporary solution to the issue [Intermittent CrashLoopBackOff in Windows Containers Running on AKS (.NET 6 Apps with System.Net.Sockets.SocketException 11001 and 10060)](https://github.com/Azure/AKS/issues/3598). Same issue is asked in [stackoverflow here](https://stackoverflow.com/questions/75928226/intermittent-crashloopbackoff-in-windows-containers-running-on-aks-net-6-apps).
 
