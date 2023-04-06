@@ -1,5 +1,6 @@
 **CrashLoopBackOff - Cleaner App**
-This is implmented as a temporary solution to the issue [Intermittent CrashLoopBackOff in Windows Containers Running on AKS (.NET 6 Apps with System.Net.Sockets.SocketException 11001 and 10060)](https://github.com/Azure/AKS/issues/3598). Same issue is asked in [stackoverflow here](https://stackoverflow.com/questions/75928226/intermittent-crashloopbackoff-in-windows-containers-running-on-aks-net-6-apps).
+
+This is implemented as a temporary solution to the issue [Intermittent CrashLoopBackOff in Windows Containers Running on AKS (.NET 6 Apps with System.Net.Sockets.SocketException 11001 and 10060)](https://github.com/Azure/AKS/issues/3598). Same issue is asked in [stackoverflow here](https://stackoverflow.com/questions/75928226/intermittent-crashloopbackoff-in-windows-containers-running-on-aks-net-6-apps).
 
 Instead of manually deleting pods that run into the issue maually, the clener app implemented in this repo is doing autmatic deletion of pods CrashLoopBackOff state with known exception reported in the container log. If the exeception is unknown the pod in CrashLoopBackOff state will not be deleted, and the container log output is printed, in cleaner app logs to show the exception of the pod having CrashLoopBackOff state.
 
