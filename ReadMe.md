@@ -9,13 +9,15 @@ Instead of manually deleting pods that run into the issue maually, the clener ap
 
 To get the CrashLoopBackOff cleaner app deployed to AKS follow the below steps.
 
+- Replace `AzureSPNAppId`,`AzureSPNAppPwd`,`AzureTenantId`,`AzureSubscriptionId`,`aksCusterName` and `aksClusterResourceGroupName` in cleanerapp/setup.sh
+- Replace `appconfigsvcname` and `aksnamespace` in cleanerapp/cleaner.sh
 - `docker build -t cleanerapp:dev .`
 - `docker tag cleanerapp:dev youracr.azurecr.io/demo/crashloopbackoffcleaner:latest`
 - [Push the tagged docker image to Azure Container Registry](http://chamindac.blogspot.com/2022/09/manually-push-net-app-docker-image-to.html)
 - use makefiles and k8s.yaml files in deploy folder to get the app deployed to AKS Linux node.
 
 
-**Note**: This solution is implemented for an application having a single container running in each pod.
+**Note**: This workaround solution is implemented for an application having a single container running in each pod running into socket exceptions at startup, trying to connect to Azure App Configuration service.
 
 Issue description is below..
 

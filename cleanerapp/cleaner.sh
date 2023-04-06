@@ -1,8 +1,8 @@
 echo "Check kubectl version"
 kubectl version --short
 
-appConfigSvc="appcs-demo-temp011.azconfig.io"
-namespace="demo"
+appConfigSvc="appconfigsvcname.azconfig.io"
+namespace="aksnamespace"
 
 while :
 do

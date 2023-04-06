@@ -13,5 +13,5 @@ az login --service-principal -u AzureSPNAppId -p AzureSPNAppPwd --tenant AzureTe
 az account set --subscription "AzureSubscriptionId"
 
 echo "Setup AKS credentials..."
-az aks get-credentials -n aks-chdemo-dev04 -g rg-chdemo-dev04 --admin
+az aks get-credentials -n aksCusterName -g aksClusterResourceGroupName --admin
 echo "Setup completed."
