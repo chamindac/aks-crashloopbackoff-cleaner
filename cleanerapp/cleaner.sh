@@ -18,7 +18,7 @@ do
             noCrashFound=false;
             echo "$eachPod is in $podState. Reading log to determine if known exception...";
             
-            podLog=$(kubectl logs $eachPod -n $namespace);
+            podLog=$(kubectl logs $eachPod -n $namespace --tail 5000);
 
             if [[ "${podLog}" == *"System.Net.Sockets.SocketException (11001): No such host is known."* \
                     && "${podLog}" == *"(No such host is known. ($appConfigSvc:443))"* ]] \
