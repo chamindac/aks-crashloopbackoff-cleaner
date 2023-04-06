@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crashloopbackoff-cleaner
+  namespace: demo
+  labels:
+    app: crashloopbackoff-cleaner
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+  minReadySeconds: 30
+  selector:
+    matchLabels:
+      service: crashloopbackoff-cleaner
+  template:
+    metadata:
+      labels:
+        app: crashloopbackoff-cleaner
+        service: crashloopbackoff-cleaner
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      priorityClassName: demo-system-highest-priority-linux
+      #------------------------------------------------------
+      # setting pod DNS policies to enable faster DNS resolution
+      # https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
+      dnsConfig:
+        options:
+          # use FQDN everywhere 
+          # any cluster local access from pods need full CNAME to resolve 
+          # short names will not resolve to internal cluster domains
+          - name: ndots
+            value: "2"
+          # dns resolver timeout and attempts
+          - name: timeout
+            value: "15"
+          - name: attempts
+            value: "3"
+          # use TCP to resolve DNS instad of using UDP (UDP is lossy and pods need to wait for timeout for lost packets)
+          - name: use-vc
+          # open new socket for retrying
+          - name: single-request-reopen
+      #------------------------------------------------------
+      terminationGracePeriodSeconds: 300 # This must be set to a value that is greater than the preStop hook wait time.
+      containers:
+        - name: crashloopbackoff-cleaner
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep","180"]
+          image: acrchdemodev04.azurecr.io/demo/crashloopbackoffcleaner:latest
+          imagePullPolicy: Always
+          resources:
+                limits:
+                  memory: 512Mi # the memory limit equals to the request!
+                  # no cpu limit! this is excluded on purpose
+                requests:
+                  memory: 512Mi
+                  cpu: "500m"
