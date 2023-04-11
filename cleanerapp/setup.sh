@@ -1,5 +1,5 @@
 echo "Setting up kubectl..."
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.9/bin/linux/amd64/kubectl
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.9/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
 mv ./kubectl /usr/bin/kubectl
 echo "Setting up kubectl completed."
