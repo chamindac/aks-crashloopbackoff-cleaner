@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/azure-cli:latest-amd64 AS base
 WORKDIR /app
-COPY ["setup.txt","setup.sh"]
-COPY ["cleaner.txt","cleaner.sh"]
+COPY ["setup.sh","setup.sh"]
+COPY ["cleaner.sh","cleaner.sh"]
 
 RUN chmod +x ./setup.sh
 RUN chmod +x ./cleaner.sh
