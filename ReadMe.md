@@ -11,7 +11,7 @@ Instead of manually deleting pods that run into the issue maually, the cleaner a
 To get the CrashLoopBackOff cleaner app deployed to AKS follow the below steps.
 
 - Clone the repo from GitHub.
-- Copy content of `cleanerapp/cleaner.sh` and `cleanerapp/setup.sh` to a text editor. Then delete the two files and create them as new files with same name. Then copy back the content these two .sh files. This is to avoid issues such as `curl: Failed to extract a sensible file name from the URL to use for storage!` when executing the two files with docker build and run. 
+- Copy content of `cleanerapp/cleaner.sh` and `cleanerapp/setup.sh` to a text editor. Then delete the two files and create them as new files with same name. Then copy back the content of these two .sh files. This is to avoid issues such as `curl: Failed to extract a sensible file name from the URL to use for storage!` when executing the two files with docker build and run. 
 - Replace `AzureSPNAppId`,`AzureSPNAppPwd`,`AzureTenantId`,`AzureSubscriptionId`,`aksCusterName` and `aksClusterResourceGroupName` in cleanerapp/setup.sh
 - Replace `appconfigsvcname` and `aksnamespace` in cleanerapp/cleaner.sh
 - `docker build -t cleanerapp:dev .`
